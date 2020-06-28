@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id "edu.wpi.first.GradleRIO" version "2020.3.2"
+}
+
+group 'org.pearadox'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile wpi.deps.wpilib()
+    compile wpi.deps.vendor.java()
+    compile "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:2020.3.2"
+    implementation "edu.wpi.first.ntcore:ntcore-jni:2020.3.2:linuxx86-64"
+    implementation "edu.wpi.first.hal:hal-jni:2020.3.2:linuxx86-64"
+    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
+    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+}
+
+configurations {
+    snobotSimCompile
+}
+
+def includeDesktopSupport = true
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+    }
+}
