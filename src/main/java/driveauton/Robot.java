@@ -63,5 +63,6 @@ public class Robot extends TimedRobot {
         ((AutoCloseable) ((Field) field).get(this)).close();
       } catch (Exception ignored) {}
     }
+    close();
   }
 }

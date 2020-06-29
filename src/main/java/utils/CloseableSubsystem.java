@@ -14,6 +14,7 @@ public class CloseableSubsystem extends SubsystemBase implements AutoCloseable {
     ).toArray();
 
     for (var field: fields) {
+      ((Field) field).setAccessible(true);
       ((AutoCloseable) ((Field) field).get(this)).close();
     }
   }

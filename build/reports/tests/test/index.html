@@ -20,13 +20,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">17</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">12</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.039s</div>
+<div class="counter">0.369s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">29%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,69 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/conditionals.ifelse.AutoAimTest.html">AutoAimTest</a>.
+<a href="classes/conditionals.ifelse.AutoAimTest.html#testNegativeErrors()">Test to see if autoAim() returns correct values for negative errors</a>
+</li>
+<li>
+<a href="classes/conditionals.ifelse.AutoAimTest.html">AutoAimTest</a>.
+<a href="classes/conditionals.ifelse.AutoAimTest.html#testPositiveErrors()">Test to see if autoAim() returns correct values for positive errors</a>
+</li>
+<li>
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html">FizzBuzzConditionalTest</a>.
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html#testMultiplesOf3()">Test if fizzBuzzConditonal() returns Fizz for multiples of 3</a>
+</li>
+<li>
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html">FizzBuzzConditionalTest</a>.
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html#testMultiplesOf3And5()">Test if fizzBuzzConditonal() returns FizzBuzz for multiples of 3 and 5</a>
+</li>
+<li>
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html">FizzBuzzConditionalTest</a>.
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html#testMultiplesOf5()">Test if fizzBuzzConditonal() returns Buzz for multiples of 5</a>
+</li>
+<li>
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html">FizzBuzzConditionalTest</a>.
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html#testNonMultiples()">Test if fizzBuzzConditional() returns n as a string if n isn't a multiple of 3 or 5</a>
+</li>
+<li>
+<a href="classes/conditionals.switchstatements.ConvertGameDataTest.html">ConvertGameDataTest</a>.
+<a href="classes/conditionals.switchstatements.ConvertGameDataTest.html#testInvalid()">Test to see if invalid strings are handled</a>
+</li>
+<li>
+<a href="classes/conditionals.switchstatements.ConvertGameDataTest.html">ConvertGameDataTest</a>.
+<a href="classes/conditionals.switchstatements.ConvertGameDataTest.html#testNullAndEmpty()">Test to see if null and empty strings are handled</a>
+</li>
+<li>
+<a href="classes/driveforward.DriveRobotTest.html">DriveRobotTest</a>.
+<a href="classes/driveforward.DriveRobotTest.html#testButton1()">Test to see if robot moves when Button 1 is pressed</a>
+</li>
+<li>
+<a href="classes/driveforward.DriveRobotTest.html">DriveRobotTest</a>.
+<a href="classes/driveforward.DriveRobotTest.html#testButtonReleased()">Test to see if robot stops when Button 1 is released</a>
+</li>
+<li>
+<a href="classes/fundamentals.PrintingTest.html">PrintingTest</a>.
+<a href="classes/fundamentals.PrintingTest.html#helloJavaTest()">Test to see if you printed 'Hello Java' using System.out.println()</a>
+</li>
+<li>
+<a href="classes/joystickdrive.JoystickDriveTest.html">JoystickDriveTest</a>.
+<a href="classes/joystickdrive.JoystickDriveTest.html#testRandomInputs()">Test to see correct values for random joystick inputs</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -79,19 +135,69 @@
 </thead>
 <tbody>
 <tr>
+<td class="failures">
+<a href="packages/conditionals.ifelse.html">conditionals.ifelse</a>
+</td>
+<td>7</td>
+<td>6</td>
+<td>0</td>
+<td>0.009s</td>
+<td class="failures">14%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/conditionals.switchstatements.html">conditionals.switchstatements</a>
+</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>0.002s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
 <td class="success">
-<a href="packages/joystickdrive.html">joystickdrive</a>
+<a href="packages/driveauton.html">driveauton</a>
+</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0.074s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/driveforward.html">driveforward</a>
+</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>0.175s</td>
+<td class="failures">33%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/fundamentals.html">fundamentals</a>
 </td>
 <td>1</td>
+<td>1</td>
 <td>0</td>
+<td>0.001s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/joystickdrive.html">joystickdrive</a>
+</td>
+<td>2</td>
+<td>1</td>
 <td>0</td>
-<td>1.039s</td>
-<td class="success">100%</td>
+<td>0.108s</td>
+<td class="failures">50%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -106,14 +212,74 @@
 </thead>
 <tbody>
 <tr>
+<td class="failures">
+<a href="classes/conditionals.ifelse.AutoAimTest.html">conditionals.ifelse.AutoAimTest</a>
+</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>0.004s</td>
+<td class="failures">33%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/conditionals.ifelse.FizzBuzzConditionalTest.html">conditionals.ifelse.FizzBuzzConditionalTest</a>
+</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>0.005s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/conditionals.switchstatements.ConvertGameDataTest.html">conditionals.switchstatements.ConvertGameDataTest</a>
+</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>0.002s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
 <td class="success">
-<a href="classes/joystickdrive.JoystickDriveTest.html">joystickdrive.JoystickDriveTest</a>
+<a href="classes/driveauton.DriveAutonTest.html">driveauton.DriveAutonTest</a>
+</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0.074s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/driveforward.DriveRobotTest.html">driveforward.DriveRobotTest</a>
+</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>0.175s</td>
+<td class="failures">33%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/fundamentals.PrintingTest.html">fundamentals.PrintingTest</a>
 </td>
 <td>1</td>
+<td>1</td>
 <td>0</td>
+<td>0.001s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/joystickdrive.JoystickDriveTest.html">joystickdrive.JoystickDriveTest</a>
+</td>
+<td>2</td>
+<td>1</td>
 <td>0</td>
-<td>1.039s</td>
-<td class="success">100%</td>
+<td>0.108s</td>
+<td class="failures">50%</td>
 </tr>
 </tbody>
 </table>
@@ -126,7 +292,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.3</a> at Jun 28, 2020, 4:17:17 PM</p>
+<a href="http://www.gradle.org">Gradle 6.3</a> at Jun 28, 2020, 9:45:18 PM</p>
 </div>
 </div>
 </body>

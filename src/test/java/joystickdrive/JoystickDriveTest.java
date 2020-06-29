@@ -6,6 +6,7 @@ import edu.wpi.first.hal.sim.RoboRioSim;
 import edu.wpi.first.hal.sim.mockdata.DriverStationDataJNI;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class JoystickDriveTest {
     Thread.sleep(50);
 
     assertEquals(0.0, leftMotor.getSpeed(), 1E-9);
-    assertEquals(0.0, leftMotor.getSpeed(), 1E-9);
+    assertEquals(0.0, rightMotor.getSpeed(), 1E-9);
   }
 
   @Test
@@ -56,16 +57,17 @@ class JoystickDriveTest {
     ds.setAutonomous(false);
 
     robot.robotPeriodic();
+
     for (int i = 0; i < 20; ++i) {
-      var throttle = rng.nextDouble() * 2 - 1;
-      var twist = rng.nextDouble() * 2 - 1;
-      DriverStationDataJNI.setJoystickAxes((byte) 0, new float[] {0, (float) throttle, (float) twist, 0, 0, 0});
+      var throttle = rng.nextFloat() * 2 - 1;
+      var twist = rng.nextFloat() * 2 - 1;
+      DriverStationDataJNI.setJoystickAxes((byte) 0, new float[] {0, throttle, twist, 0, 0, 0});
       ds.notifyNewData();
       Thread.sleep(50);
       robot.robotPeriodic();
       diffDriveRef.arcadeDrive(throttle, twist);
-      assertEquals(leftMotorReference.getSpeed(), leftMotor.getSpeed(), 1E-4);
-      assertEquals(rightMotorReference.getSpeed(), rightMotor.getSpeed(), 1E-4);
+      assertEquals(leftMotorReference.getSpeed(), leftMotor.getSpeed(), 1E-9);
+      assertEquals(rightMotorReference.getSpeed(), rightMotor.getSpeed(), 1E-9);
     }
     leftMotorTest.close();
     rightMotorTest.close();
@@ -74,5 +76,6 @@ class JoystickDriveTest {
   @AfterEach
   public void closeResources() {
     robot.closeResources();
+    CommandScheduler.getInstance().cancelAll();
   }
 }
