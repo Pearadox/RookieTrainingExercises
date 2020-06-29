@@ -58,7 +58,6 @@ class DriveRobotTest {
   public void testButtonReleased() throws InterruptedException {
     var roboRIO = new RoboRioSim(0);
 
-
     var ds = new DriverStationSim();
 
     var leftMotor = new PWMSim(1);
