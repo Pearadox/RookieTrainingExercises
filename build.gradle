@@ -22,8 +22,28 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 }
 
-configurations {
-    snobotSimCompile
+task('novice', type: Test) {
+    useJUnitPlatform()
+    include(
+            'javaonly/printing/**',
+            'javaonly/fizzbuzzconditional/**',
+            'javaonly/convertgamedata/**',
+            'robot/driveforward/**'
+    )
+}
+
+task('advbeginner', type: Test) {
+    useJUnitPlatform()
+    include(
+            'javaonly/printing/**',
+            'javaonly/fizzbuzzconditional/**',
+            'javaonly/convertgamedata/**',
+            'robot/driveforward/**',
+            'javaonly/convertgamedata/**',
+            'robot/joystickdrive/**',
+            'robot/autondrive/**',
+            'robot/flywheelstates/**'
+    )
 }
 
 def includeDesktopSupport = true

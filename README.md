@@ -28,3 +28,4 @@ Rookie training exercises for 5414 Pearadox Rookies wanting to do some programmi
 - DriveForward: Exercise to drive a TimedRobot forward based on a Joystick button input.
 - JoystickDrive: Exercise to drive a Command-based robot using the arcadeDrive control scheme.
 - DriveAuton: Exercise to drive a Command-based robot off the initiation line in autonomous.
+- FlywheelStates: Exercise to implement a state machine (flywheel) with WPILib and command-based.
