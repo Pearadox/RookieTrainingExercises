@@ -17,13 +17,6 @@ public class Robot extends TimedRobot {
    *
    */
 
-  private final PWMVictorSPX left = new PWMVictorSPX(1);
-  private final PWMVictorSPX right = new PWMVictorSPX(2);
-
-  private final DifferentialDrive drive = new DifferentialDrive(left, right);
-
-  private final Joystick joystick = new Joystick(1);
-
 
   @Override
   public void teleopPeriodic() {
@@ -33,7 +26,6 @@ public class Robot extends TimedRobot {
      *
      * joystick.getRawButton() will get any button's state on the joystick.
      */
-
   }
 
   // DO NOT TOUCH
@@ -44,6 +36,7 @@ public class Robot extends TimedRobot {
 
     for (var field: fields) {
       try {
+        ((Field) field).setAccessible(true);
         ((AutoCloseable) ((Field) field).get(this)).close();
       } catch (Exception ignored) {}
     }

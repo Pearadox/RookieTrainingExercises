@@ -10,12 +10,19 @@ repositories {
     mavenCentral()
 }
 
+wpi.maven.useDevelopment = true
+wpi.wpilibVersion = '2020.+'
+
 dependencies {
     compile wpi.deps.wpilib()
     compile wpi.deps.vendor.java()
     compile "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:2020.3.2"
-    implementation "edu.wpi.first.ntcore:ntcore-jni:2020.3.2:linuxx86-64"
-    implementation "edu.wpi.first.hal:hal-jni:2020.3.2:linuxx86-64"
+    compile wpi.deps.sim.driverstation(wpi.platforms.desktop, true)
+    compile wpi.deps.sim.lowfi(wpi.platforms.desktop, true)
+    compile wpi.deps.sim.gui(wpi.platforms.desktop, true)
+    compile wpi.deps.wpilibJni(wpi.platforms.desktop)
+    compile wpi.deps.wpilibEmbeddedJni(wpi.platforms.desktop)
+
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
@@ -46,10 +53,6 @@ task('advbeginner', type: Test) {
     )
 }
 
-def includeDesktopSupport = true
-
 test {
-    useJUnitPlatform {
-        includeEngines 'junit-jupiter'
-    }
+    useJUnitPlatform()
 }

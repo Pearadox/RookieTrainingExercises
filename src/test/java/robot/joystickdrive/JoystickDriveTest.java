@@ -1,11 +1,11 @@
 package robot.joystickdrive;
 
-import edu.wpi.first.hal.sim.DriverStationSim;
-import edu.wpi.first.hal.sim.PWMSim;
-import edu.wpi.first.hal.sim.RoboRioSim;
-import edu.wpi.first.hal.sim.mockdata.DriverStationDataJNI;
+import edu.wpi.first.hal.simulation.DriverStationDataJNI;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.simulation.DriverStationSim;
+import edu.wpi.first.wpilibj.simulation.PWMSim;
+import edu.wpi.first.wpilibj.simulation.RoboRioSim;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -71,11 +71,13 @@ class JoystickDriveTest {
     }
     leftMotorTest.close();
     rightMotorTest.close();
+    diffDriveRef.close();
   }
 
   @AfterEach
   public void closeResources() {
     robot.closeResources();
     CommandScheduler.getInstance().cancelAll();
+    CommandScheduler.getInstance().clearButtons();
   }
 }

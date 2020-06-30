@@ -1,8 +1,10 @@
 package robot.flywheelstates;
 
-import edu.wpi.first.hal.sim.DriverStationSim;
-import edu.wpi.first.hal.sim.PWMSim;
-import edu.wpi.first.hal.sim.mockdata.DriverStationDataJNI;
+
+import edu.wpi.first.hal.simulation.DriverStationDataJNI;
+import edu.wpi.first.wpilibj.simulation.DriverStationSim;
+import edu.wpi.first.wpilibj.simulation.PWMSim;
+import edu.wpi.first.wpilibj.simulation.RoboRioSim;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,14 +16,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class FlywheelStateTest {
 
   Robot robot = new Robot();
+  RoboRioSim roboRioSim = new RoboRioSim(0);
+  DriverStationSim ds = new DriverStationSim();
+
+  @BeforeEach
+  public void enable() {
+    ds.setEnabled(true);
+    ds.setAutonomous(false);
+  }
 
   @Test
   @DisplayName("Test that flywheel state is off when no buttons assigned are pressed")
   public void testNoInput() throws InterruptedException {
-    var ds = new DriverStationSim();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
-
     var flywheel = new PWMSim(3);
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 0b0, 12);
@@ -51,10 +57,6 @@ class FlywheelStateTest {
   @Test
   @DisplayName("Test that flywheel state is power port when you press button 1")
   public void testPowerPort() throws InterruptedException {
-    var ds = new DriverStationSim();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
-
     var flywheel = new PWMSim(3);
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1, 12);
@@ -72,10 +74,6 @@ class FlywheelStateTest {
   @Test
   @DisplayName("Test that flywheel state is initiation line when you press button 2")
   public void testInitiationLine() throws InterruptedException {
-    var ds = new DriverStationSim();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
-
     var flywheel = new PWMSim(3);
 
     robot.robotInit();
@@ -94,10 +92,6 @@ class FlywheelStateTest {
   @Test
   @DisplayName("Test that flywheel state is trench when you press button 3")
   public void testTrench() throws InterruptedException {
-    var ds = new DriverStationSim();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
-
     var flywheel = new PWMSim(3);
 
     robot.robotInit();
@@ -117,10 +111,6 @@ class FlywheelStateTest {
   @Test
   @DisplayName("Test that flywheel state transitions when you switch buttons")
   public void testTransition() throws InterruptedException {
-    var ds = new DriverStationSim();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
-
     var flywheel = new PWMSim(3);
 
     robot.robotInit();
@@ -159,10 +149,6 @@ class FlywheelStateTest {
   @Test
   @DisplayName("Test that flywheel turns off on button release")
   public void testRelease() throws InterruptedException {
-    var ds = new DriverStationSim();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
-
     var flywheel = new PWMSim(3);
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1 << 1, 12);
