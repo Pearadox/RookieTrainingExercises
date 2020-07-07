@@ -1,10 +1,10 @@
 package robot.driveauton;
 
 
-import edu.wpi.first.hal.simulation.SimHooks;
 import edu.wpi.first.wpilibj.simulation.*;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,21 +14,20 @@ class DriveAutonTest {
 
   private Robot robot = new Robot();
 
+  @BeforeEach
+  public void enable() {
+    DriverStationSim.setAutonomous(true);
+    DriverStationSim.setEnabled(true);
+  }
+
   @Test
   @DisplayName("Test if robot drives for 3 seconds")
   public void testDrive() {
-    var roboRIO = new RoboRioSim(0);
-
     SimHooks.restartTiming();
     SimHooks.pauseTiming();
 
-    var ds = new DriverStationSim();
-
     var left = new PWMSim(1);
     var right = new PWMSim(2);
-
-    ds.setAutonomous(true);
-    ds.setEnabled(true);
 
     robot.robotInit();
     robot.autonomousInit();
@@ -46,17 +45,12 @@ class DriveAutonTest {
   @Test
   @DisplayName("Test if robot stops after 3 seconds")
   public void testStop() throws InterruptedException {
-    var roboRIO = new RoboRioSim(0);
     SimHooks.restartTiming();
     SimHooks.pauseTiming();
-
-    var ds = new DriverStationSim();
 
     var left = new PWMSim(1);
     var right = new PWMSim(2);
 
-    ds.setAutonomous(true);
-    ds.setEnabled(true);
 
     robot.robotInit();
     robot.autonomousInit();

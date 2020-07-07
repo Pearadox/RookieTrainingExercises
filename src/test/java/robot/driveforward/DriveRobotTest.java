@@ -14,15 +14,11 @@ class DriveRobotTest {
   @Test
   @DisplayName("Test to see if robot does not move when there is no input")
   public void testNoInput() throws InterruptedException {
-    var roboRIO = new RoboRioSim(0);
-
-    var ds = new DriverStationSim();
-
     var leftMotor = new PWMSim(1);
     var rightMotor = new PWMSim(2);
 
     DriverStationDataJNI.setJoystickButtons((byte) 1, 0b0, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
     for (double currentTime = 0; currentTime < 5; currentTime += 0.02) {
       robot.teleopPeriodic();
@@ -35,15 +31,11 @@ class DriveRobotTest {
   @Test
   @DisplayName("Test to see if robot moves when Button 1 is pressed")
   public void testButton1() throws InterruptedException {
-    var roboRIO = new RoboRioSim(0);
-
-    var ds = new DriverStationSim();
-
     var leftMotor = new PWMSim(1);
     var rightMotor = new PWMSim(2);
 
     DriverStationDataJNI.setJoystickButtons((byte) 1, 0b1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
     for (double currentTime = 0; currentTime < 5; currentTime += 0.02) {
       robot.teleopPeriodic();
@@ -56,15 +48,12 @@ class DriveRobotTest {
   @Test
   @DisplayName("Test to see if robot stops when Button 1 is released")
   public void testButtonReleased() throws InterruptedException {
-    var roboRIO = new RoboRioSim(0);
-
-    var ds = new DriverStationSim();
 
     var leftMotor = new PWMSim(1);
     var rightMotor = new PWMSim(2);
 
     DriverStationDataJNI.setJoystickButtons((byte) 1, 0b1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
     for (double currentTime = 0; currentTime < 5; currentTime += 0.02) {
       robot.teleopPeriodic();
@@ -72,7 +61,7 @@ class DriveRobotTest {
       assertNotEquals(0.0, rightMotor.getSpeed());
     }
     DriverStationDataJNI.setJoystickButtons((byte) 1, 0b0, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
     for (double currentTime = 0; currentTime < 5; currentTime += 0.02) {
       robot.teleopPeriodic();

@@ -21,19 +21,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OdometryTest {
 
   Robot robot = new Robot();
-  RoboRioSim roboRio = new RoboRioSim(0);
-  DriverStationSim ds = new DriverStationSim();
 
   @BeforeEach
   public void enable() {
-    ds.setEnabled(true);
+    DriverStationSim.setEnabled(true);
   }
 
   @Test
   @DisplayName("Test that odometry works correctly with random encoder values")
   public void testRandom() throws IllegalAccessException, NoSuchFieldException {
-    var left = new EncoderSim(0);
-    var right = new EncoderSim(1);
+    var left = EncoderSim.createForChannel(1);
+    var right = EncoderSim.createForChannel(3);
     var gyro = new AnalogGyroSim(0);
     var rng = new Random();
 

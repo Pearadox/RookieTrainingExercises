@@ -16,13 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class FlywheelStateTest {
 
   Robot robot = new Robot();
-  RoboRioSim roboRioSim = new RoboRioSim(0);
-  DriverStationSim ds = new DriverStationSim();
-
   @BeforeEach
   public void enable() {
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
+    DriverStationSim.setEnabled(true);
+    DriverStationSim.setAutonomous(false);
   }
 
   @Test
@@ -31,7 +28,7 @@ class FlywheelStateTest {
     var flywheel = new PWMSim(3);
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 0b0, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotInit();
@@ -43,7 +40,7 @@ class FlywheelStateTest {
     }
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 0xFFF << 3, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -60,7 +57,7 @@ class FlywheelStateTest {
     var flywheel = new PWMSim(3);
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotInit();
@@ -79,7 +76,7 @@ class FlywheelStateTest {
     robot.robotInit();
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1 << 1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -97,7 +94,7 @@ class FlywheelStateTest {
     robot.robotInit();
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1 << 2, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -116,7 +113,7 @@ class FlywheelStateTest {
     robot.robotInit();
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1 << 1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -126,7 +123,7 @@ class FlywheelStateTest {
     }
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1 << 2, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -136,7 +133,7 @@ class FlywheelStateTest {
     }
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -152,7 +149,7 @@ class FlywheelStateTest {
     var flywheel = new PWMSim(3);
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1 << 1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotInit();
@@ -163,7 +160,7 @@ class FlywheelStateTest {
     }
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 0, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();
@@ -173,7 +170,7 @@ class FlywheelStateTest {
     }
 
     DriverStationDataJNI.setJoystickButtons((byte) 0, 1, 12);
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     robot.robotPeriodic();

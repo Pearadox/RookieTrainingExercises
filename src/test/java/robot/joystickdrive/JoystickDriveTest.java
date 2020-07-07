@@ -22,13 +22,11 @@ class JoystickDriveTest {
   @Test
   @DisplayName("Test to see that robot is still when no inputs")
   public void testNoInput() throws InterruptedException {
-    var ds = new DriverStationSim();
-
     var leftMotor = new PWMSim(1);
     var rightMotor = new PWMSim(2);
 
     DriverStationDataJNI.setJoystickAxes((byte) 0, new float[] {0, 0, 0, 0, 0, 0});
-    ds.notifyNewData();
+    DriverStationSim.notifyNewData();
     Thread.sleep(50);
 
     assertEquals(0.0, leftMotor.getSpeed(), 1E-9);
@@ -38,9 +36,6 @@ class JoystickDriveTest {
   @Test
   @DisplayName("Test to see correct values for random joystick inputs")
   public void testRandomInputs() throws InterruptedException {
-    var roboRIO = new RoboRioSim(0);
-
-    var ds = new DriverStationSim();
 
     var leftMotor = new PWMSim(1);
     var rightMotor = new PWMSim(2);
@@ -53,8 +48,8 @@ class JoystickDriveTest {
     var rng = new Random();
 
     robot.robotInit();
-    ds.setEnabled(true);
-    ds.setAutonomous(false);
+    DriverStationSim.setEnabled(true);
+    DriverStationSim.setAutonomous(false);
 
     robot.robotPeriodic();
 
@@ -62,7 +57,7 @@ class JoystickDriveTest {
       var throttle = rng.nextFloat() * 2 - 1;
       var twist = rng.nextFloat() * 2 - 1;
       DriverStationDataJNI.setJoystickAxes((byte) 0, new float[] {0, throttle, twist, 0, 0, 0});
-      ds.notifyNewData();
+      DriverStationSim.notifyNewData();
       Thread.sleep(50);
       robot.robotPeriodic();
       diffDriveRef.arcadeDrive(throttle, twist);
