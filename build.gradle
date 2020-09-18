@@ -22,6 +22,7 @@ dependencies {
     compile wpi.deps.sim.gui(wpi.platforms.desktop, true)
     compile wpi.deps.wpilibJni(wpi.platforms.desktop)
     compile wpi.deps.wpilibEmbeddedJni(wpi.platforms.desktop)
+    compile "edu.wpi.first.wpimath:wpimath-java:2020.+"
 
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
