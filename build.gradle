@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "edu.wpi.first.GradleRIO" version "2020.3.2"
+    id "edu.wpi.first.GradleRIO" version "2021.3.1"
 }
 
 group 'org.pearadox'
@@ -11,18 +11,17 @@ repositories {
 }
 
 wpi.maven.useDevelopment = true
-wpi.wpilibVersion = '2020.+'
+wpi.wpilibVersion = '2021.+'
 
 dependencies {
     compile wpi.deps.wpilib()
     compile wpi.deps.vendor.java()
-    compile "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:2020.3.2"
     compile wpi.deps.sim.driverstation(wpi.platforms.desktop, true)
-    compile wpi.deps.sim.lowfi(wpi.platforms.desktop, true)
     compile wpi.deps.sim.gui(wpi.platforms.desktop, true)
     compile wpi.deps.wpilibJni(wpi.platforms.desktop)
     compile wpi.deps.wpilibEmbeddedJni(wpi.platforms.desktop)
-    compile "edu.wpi.first.wpimath:wpimath-java:2020.+"
+    compile "edu.wpi.first.wpimath:wpimath-java:2021.+"
+    compile "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:2021.+"
 
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
